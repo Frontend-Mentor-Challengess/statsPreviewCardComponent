@@ -1,0 +1,273 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lexend+Deca:wght@100..900&display=swap");
+
+// *variables*
+$mainbg: #090b1a;
+$cardbg: #1b1938;
+$accent: #aa5cdb;
+
+$mainHead-stats: #ffffff;
+$mainP: hsla(0, 0%, 100%, 0.75);
+$statHead: hsla(0, 0%, 100%, 0.6);
+
+$inter400: 400;
+$inter700: 700;
+
+$lexend: 400;
+
+// *css reset*
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin */
+* {
+  margin: 0;
+}
+
+body {
+  /* 3. Add accessible line-height */
+  line-height: 1.5;
+  /* 4. Improve text rendering */
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 5. Improve media defaults */
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 6. Inherit fonts for form controls */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* 7. Avoid text overflows */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+/* 8. Improve line wrapping */
+p {
+  text-wrap: pretty;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  text-wrap: balance;
+}
+
+// font-family: "Lexend Deca", serif;
+//   font-optical-sizing: auto;
+//   font-weight: <weight>;
+//   font-style: normal;
+
+// font-family: "Inter", serif;
+//   font-optical-sizing: auto;
+//   font-weight: <weight>;
+//   font-style: normal;
+
+body {
+  background-color: $mainbg;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 3vh;
+
+  main {
+    background-color: $cardbg;
+    display: flex;
+    width: 80vw;
+    height: max-content;
+    border-radius: 10px;
+
+    .content {
+      flex-basis: 55%;
+      padding: 4rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3vh;
+
+      .title {
+        color: $mainHead-stats;
+        font-family: "Inter", serif;
+        font-optical-sizing: auto;
+        font-weight: $inter700;
+        font-style: normal;
+
+        span {
+          color: $accent;
+        }
+      }
+      .description {
+        color: $mainP;
+        font-family: "Inter", serif;
+        font-optical-sizing: auto;
+        font-weight: $inter400;
+        font-style: normal;
+      }
+      section {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+        gap: 4vw;
+        padding-top: 7vh;
+        .section {
+          .stat-values {
+            color: $mainHead-stats;
+            font-family: "Inter", serif;
+            font-optical-sizing: auto;
+            font-weight: $inter700;
+            font-style: normal;
+          }
+          .stats {
+            text-transform: uppercase;
+            color: $mainP;
+            font-family: "Lexend Deca", serif;
+            font-optical-sizing: auto;
+            font-weight: $lexend;
+            font-style: normal;
+          }
+        }
+      }
+    }
+
+    picture {
+      flex-basis: 45%;
+      border-radius: 0 10px 10px 0;
+
+      .mobile-img {
+        width: 100%;
+        height: 100%;
+        border-radius: 0 0 10px 10px;
+        display: none;
+      }
+      .desktop-img {
+        border-radius: 0 10px 10px 0;
+        background-color: $accent;
+        width: 100%;
+        height: 100%;
+        display: none;
+      }
+    }
+  }
+  footer {
+    margin-bottom: 5vh;
+    .attribution {
+      color: $mainHead-stats;
+      font-size: 11px;
+      text-align: center;
+    }
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  body {
+    main {
+      width: min-content;
+      flex-direction: column;
+      picture {
+        position: relative;
+        display: inline-block;
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 01;
+          background-color: $accent;
+          mix-blend-mode: multiply;
+          pointer-events: none;
+        }
+
+        .mobile-img {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 577px) and (max-width: 1024px) {
+  body {
+    main {
+      width: fit-content;
+      .content {
+        flex-basis: 50%;
+        padding: 2rem;
+      }
+      picture {
+        flex-basis: 50%;
+        position: relative;
+        display: inline-block;
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 01;
+          background-color: $accent;
+          mix-blend-mode: multiply;
+          pointer-events: none;
+        }
+
+        .desktop-img {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1025px) {
+  body {
+    main {
+      picture {
+        position: relative;
+        display: inline-block;
+        &::after {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          opacity: 01;
+          background-color: $accent;
+          mix-blend-mode: multiply;
+          pointer-events: none;
+        }
+        .desktop-img {
+          display: block;
+        }
+      }
+    }
+  }
+}
